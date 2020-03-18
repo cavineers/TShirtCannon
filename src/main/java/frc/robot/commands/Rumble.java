@@ -6,9 +6,16 @@ import edu.wpi.first.wpilibj.GenericHID.RumbleType;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 
 public class Rumble extends CommandBase {
+    // Joystick
     private Joystick joy;
+
+    // Duration
     private double duration;
+
+    // Strength
     private double strength;
+
+    // Timer
     private double startTime;
 
     public Rumble(Joystick joy, double duration, double strength) {
@@ -20,20 +27,24 @@ public class Rumble extends CommandBase {
 
     @Override
     public void initialize() {
+        // Start rumbling
         this.joy.setRumble(RumbleType.kLeftRumble, this.strength);
         this.joy.setRumble(RumbleType.kRightRumble, this.strength);
     }
 
     @Override
-    public void execute() {
-    }
+    public void execute() {}
 
     @Override
     public void end(boolean interrupted) {
+        // Stop rumbling
+        this.joy.setRumble(RumbleType.kLeftRumble, 0);
+        this.joy.setRumble(RumbleType.kRightRumble, 0);
     }
 
     @Override
     public boolean isFinished() {
+        // Stop after time
         return Timer.getFPGATimestamp()-this.startTime >= this.duration;
     }
 }

@@ -5,10 +5,14 @@ import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.DriveTrain;
 
 public class TeleDrive extends CommandBase {
+    // DriveTrain
     private DriveTrain dt;
+
+    // Joystick
     private Joystick joy;
 
     public TeleDrive(DriveTrain dt, Joystick joy) {
+        // Add requirements
         addRequirements(dt);
         this.dt = dt;
         this.joy = joy;
@@ -19,7 +23,8 @@ public class TeleDrive extends CommandBase {
 
     @Override
     public void execute() {
-        this.dt.drive(-this.deadzone(joy.getRawAxis(1), 0.05), -this.deadzone(joy.getRawAxis(4), 0.05));
+        // Drive
+        this.dt.drive(-joy.getRawAxis(1), -joy.getRawAxis(4));
     }
 
     @Override
@@ -30,15 +35,5 @@ public class TeleDrive extends CommandBase {
     @Override
     public boolean isFinished() {
         return false;
-    }
-
-    public double deadzone(double input, double removed) {
-        if (Math.abs(input) <= removed)
-            input = 0;
-        else if (input < 0)
-            input = -Math.pow(input, 2);
-        else
-            input = Math.pow(input, 2);
-        return input;
     }
 }

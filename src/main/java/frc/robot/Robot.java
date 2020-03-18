@@ -9,7 +9,7 @@ public class Robot extends TimedRobot {
 
     @Override
     public void robotInit() {
-        robotContainer = new RobotContainer();
+        this.robotContainer = new RobotContainer();
     }
 
     @Override
@@ -31,11 +31,13 @@ public class Robot extends TimedRobot {
 
     @Override
     public void teleopInit() {
-        new TeleDrive(this.robotContainer.drivetrain, this.robotContainer.joy);
+        new TeleDrive(this.robotContainer.drivetrain, this.robotContainer.joy).schedule(false);
     }
 
     @Override
-    public void teleopPeriodic() {}
+    public void teleopPeriodic() {
+        this.robotContainer.controllerPeriodic();
+    }
 
     @Override
     public void testInit() {

@@ -37,10 +37,10 @@ public class RobotContainer {
     public SafetyMode controllerMode = SafetyMode.SAFETY_ON;
 
     // Subsystems
+    public DriveTrain drivetrain = new DriveTrain();
     public AnglePistons pistons = new AnglePistons();
     public Cannon leftCannon = new Cannon(Constants.PCMChannels.LeftCannon);
     public Cannon rightCannon = new Cannon(Constants.PCMChannels.RightCannon);
-    public DriveTrain drivetrain = new DriveTrain(this.joy);
 
     public RobotContainer() {
         configureButtonBindings();
@@ -61,22 +61,22 @@ public class RobotContainer {
                 case 90: { //*RIGHT
                     if (controllerMode == SafetyMode.SAFETY_OFF) {
                         System.out.println("Shooting right cannon");
-                        new Shoot(this.rightCannon);
-                        new SetSafety(this, SafetyMode.SAFETY_ON);
+                        new Shoot(this.rightCannon).schedule();
+                        new SetSafety(this, SafetyMode.SAFETY_ON).schedule();
                     } else {
                         System.out.println("Can't fire. Controller locked");
-                        new Rumble(this.joy, 0.4, 0.8);
+                        new Rumble(this.joy, 0.4, 0.8).schedule();
                     }
                     break;
                 }
                 case 270: { //*LEFT
                     if (controllerMode == SafetyMode.SAFETY_OFF) {
                         System.out.println("Shooting left cannon");
-                        new Shoot(this.leftCannon);
-                        new SetSafety(this, SafetyMode.SAFETY_ON);
+                        new Shoot(this.leftCannon).schedule();
+                        new SetSafety(this, SafetyMode.SAFETY_ON).schedule();
                     } else {
                         System.out.println("Can't fire. Controller locked");
-                        new Rumble(this.joy, 0.4, 0.8);
+                        new Rumble(this.joy, 0.4, 0.8).schedule();
                     }
                     break;
                 }
