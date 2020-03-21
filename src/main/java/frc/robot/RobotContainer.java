@@ -2,7 +2,7 @@ package frc.robot;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
-import frc.robot.commands.Rumble;
+import edu.wpi.first.wpilibj2.command.button.POVButton;
 import frc.robot.commands.SetSafety;
 import frc.robot.commands.Shoot;
 import frc.robot.commands.TogglePistons;
@@ -25,7 +25,8 @@ public class RobotContainer {
     public JoystickButton left_stick = new JoystickButton(joy, 9);
     public JoystickButton right_stick = new JoystickButton(joy, 10);
 
-    public int lastDpad = -1;
+    public POVButton dPadLeft = new POVButton(this.joy, 270);
+    public POVButton dPadRight = new POVButton(this.joy, 90);
 
     // Controller map mode
     public enum SafetyMode {
@@ -53,35 +54,10 @@ public class RobotContainer {
 
         // Toggle pistons
         a_button.whenPressed(new TogglePistons(this.pistons));
-    }
 
-    public void controllerPeriodic() {
-        if (lastDpad != joy.getPOV()) {
-			switch (joy.getPOV()) {
-                case 90: { //*RIGHT
-                    if (controllerMode == SafetyMode.SAFETY_OFF) {
-                        System.out.println("Shooting right cannon");
-                        new Shoot(this.rightCannon).schedule();
-                        new SetSafety(this, SafetyMode.SAFETY_ON).schedule();
-                    } else {
-                        System.out.println("Can't fire. Controller locked");
-                        new Rumble(this.joy, 0.4, 0.8).schedule();
-                    }
-                    break;
-                }
-                case 270: { //*LEFT
-                    if (controllerMode == SafetyMode.SAFETY_OFF) {
-                        System.out.println("Shooting left cannon");
-                        new Shoot(this.leftCannon).schedule();
-                        new SetSafety(this, SafetyMode.SAFETY_ON).schedule();
-                    } else {
-                        System.out.println("Can't fire. Controller locked");
-                        new Rumble(this.joy, 0.4, 0.8).schedule();
-                    }
-                    break;
-                }
-			}
-		}
-		lastDpad = joy.getPOV();
+        // D-pad buttons
+        dPadLeft.whenPressed(new Shoot(this.leftCannon, this));
+        dPadRight.whenPressed(new Shoot(this.rightCannon, this));
+
     }
 }

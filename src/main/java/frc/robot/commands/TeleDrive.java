@@ -2,6 +2,7 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj2.command.CommandBase;
+import frc.lib.Deadzone;
 import frc.robot.subsystems.DriveTrain;
 
 public class TeleDrive extends CommandBase {
@@ -24,7 +25,7 @@ public class TeleDrive extends CommandBase {
     @Override
     public void execute() {
         // Drive
-        this.dt.drive(-joy.getRawAxis(1), -joy.getRawAxis(4));
+        this.dt.drive(Deadzone.apply(joy.getRawAxis(1), 0.05), Deadzone.apply(-joy.getRawAxis(4), 0.05));
     }
 
     @Override

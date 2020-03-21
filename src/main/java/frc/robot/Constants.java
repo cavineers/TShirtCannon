@@ -4,10 +4,10 @@ public final class Constants {
     // Can IDs
     public static final class CANIds {
         public static final int PCM = 0;
-        public static final int LeftDrive1 = 1;
-        public static final int LeftDrive2 = 2;
-        public static final int RightDrive1 = 3;
-        public static final int RightDrive2 = 4;
+        public static final int RightDrive1 = 1;
+        public static final int RightDrive2 = 2;
+        public static final int LeftDrive1 = 3;
+        public static final int LeftDrive2 = 4;
         public static final int PDP = 15;
     }
 

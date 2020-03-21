@@ -8,28 +8,25 @@ import frc.robot.Constants;
 
 public class DriveTrain extends SubsystemBase {
     // Motors
-    public WPI_TalonSRX leftMotor1  = new WPI_TalonSRX(Constants.CANIds.LeftDrive1);
-    public WPI_TalonSRX leftMotor2  = new WPI_TalonSRX(Constants.CANIds.LeftDrive2);
+    public WPI_TalonSRX m_leftMotor1  = new WPI_TalonSRX(Constants.CANIds.LeftDrive1);
+    public WPI_TalonSRX m_leftMotor2  = new WPI_TalonSRX(Constants.CANIds.LeftDrive2);
     
-    public WPI_TalonSRX rightMotor1 = new WPI_TalonSRX(Constants.CANIds.RightDrive1);
-    public WPI_TalonSRX rightMotor2 = new WPI_TalonSRX(Constants.CANIds.RightDrive2);
+    public WPI_TalonSRX m_rightMotor1 = new WPI_TalonSRX(Constants.CANIds.RightDrive1);
+    public WPI_TalonSRX m_rightMotor2 = new WPI_TalonSRX(Constants.CANIds.RightDrive2);
     
     // Differential Drive
-    private DifferentialDrive drive = new DifferentialDrive(leftMotor1, rightMotor1);
+    private DifferentialDrive drive = new DifferentialDrive(m_leftMotor1, m_rightMotor1);
 
     /**
      * Constructor
      */
     public DriveTrain() {
         // Follow
-        this.leftMotor2.follow(leftMotor1);
-        this.rightMotor2.follow(rightMotor1);
+        this.m_leftMotor2.follow(this.m_leftMotor1);
+        this.m_rightMotor2.follow(this.m_rightMotor1);
 
         // Invert right side
         this.drive.setRightSideInverted(true);
-
-        // Set the controller deadzone
-        this.drive.setDeadband(0.05);
     }
 
     /**
