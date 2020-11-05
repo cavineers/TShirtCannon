@@ -1,4 +1,4 @@
-# Fahrenheit Controls
+# T-Shirt Cannon Controls
 
 ![Controller Format](https://github.com/cavineers/TShirtCannon/blob/master/controller_mapped.png)
 
