@@ -58,6 +58,5 @@ public class RobotContainer {
         // D-pad buttons
         dPadLeft.whenPressed(new Shoot(this.leftCannon, this));
         dPadRight.whenPressed(new Shoot(this.rightCannon, this));
-
     }
 }
