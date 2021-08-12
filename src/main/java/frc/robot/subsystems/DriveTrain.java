@@ -7,40 +7,40 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
 public class DriveTrain extends SubsystemBase {
-    // Motors
-    public WPI_TalonSRX m_leftMotor1  = new WPI_TalonSRX(Constants.CANIds.LeftDrive1);
-    public WPI_TalonSRX m_leftMotor2  = new WPI_TalonSRX(Constants.CANIds.LeftDrive2);
-    
-    public WPI_TalonSRX m_rightMotor1 = new WPI_TalonSRX(Constants.CANIds.RightDrive1);
-    public WPI_TalonSRX m_rightMotor2 = new WPI_TalonSRX(Constants.CANIds.RightDrive2);
-    
-    // Differential Drive
-    private DifferentialDrive drive = new DifferentialDrive(m_leftMotor1, m_rightMotor1);
+  // Motors
+  public WPI_TalonSRX leftMotor1  = new WPI_TalonSRX(Constants.CANIds.LeftDrive1);
+  public WPI_TalonSRX leftMotor2  = new WPI_TalonSRX(Constants.CANIds.LeftDrive2);
 
-    /**
-     * Constructor
-     */
-    public DriveTrain() {
-        // Follow
-        this.m_leftMotor2.follow(this.m_leftMotor1);
-        this.m_rightMotor2.follow(this.m_rightMotor1);
+  public WPI_TalonSRX rightMotor1 = new WPI_TalonSRX(Constants.CANIds.RightDrive1);
+  public WPI_TalonSRX rightMotor2 = new WPI_TalonSRX(Constants.CANIds.RightDrive2);
 
-        // Invert right side
-        this.drive.setRightSideInverted(true);
-    }
+  // Differential Drive
+  private DifferentialDrive drive = new DifferentialDrive(leftMotor1, rightMotor1);
 
-    /**
-     * Drive
-     * @param forward forward param
-     * @param rotate rotation param
-     */
-    public void drive(double forward, double rotate) {
-        drive.curvatureDrive(forward, rotate, false);
-    }
+  /**
+   * Constructor.
+   */
+  public DriveTrain() {
+    // Follow
+    this.leftMotor2.follow(this.leftMotor1);
+    this.rightMotor2.follow(this.rightMotor1);
 
-    /**
-     * Periodic
-     */
-    @Override
-    public void periodic() {}
+    // Invert right side
+    this.drive.setRightSideInverted(true);
+  }
+
+  /**
+   * Drive.
+   * @param forward forward param
+   * @param rotate rotation param
+   */
+  public void drive(double forward, double rotate) {
+    drive.curvatureDrive(forward, rotate, false);
+  }
+
+  /**
+   * Periodic.
+   */
+  @Override
+  public void periodic() {}
 }
