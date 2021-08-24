@@ -1,17 +1,17 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import frc.robot.subsystems.AnglePistons;
+import frc.robot.subsystems.SealingPiston;
 
 public class TogglePistons extends CommandBase {
   // Piston
-  private AnglePistons pistons;
+  private SealingPiston pistons;
 
   /**
    * Toggles the piston positions.
    * @param pistons AnglePiston Objects
    */
-  public TogglePistons(AnglePistons pistons) {
+  public TogglePistons(SealingPiston pistons) {
     // Add to requirements
     addRequirements(pistons);
     this.pistons = pistons;
@@ -20,10 +20,10 @@ public class TogglePistons extends CommandBase {
   @Override
   public void initialize() {
     // Toggle pistons
-    if (this.pistons.getPistonState() == AnglePistons.PistonState.RETRACTED) {
-      this.pistons.setPistonState(AnglePistons.PistonState.EXTENDED);
+    if (this.pistons.getPistonState() == SealingPiston.PistonState.RETRACTED) {
+      this.pistons.setPistonState(SealingPiston.PistonState.EXTENDED);
     } else {
-      this.pistons.setPistonState(AnglePistons.PistonState.RETRACTED);
+      this.pistons.setPistonState(SealingPiston.PistonState.RETRACTED);
     }
   }
 

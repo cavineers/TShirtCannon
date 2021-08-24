@@ -4,7 +4,7 @@ import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
-public class AnglePistons extends SubsystemBase {
+public class SealingPiston extends SubsystemBase {
   // State
   public enum PistonState {
       EXTENDED,
@@ -13,12 +13,12 @@ public class AnglePistons extends SubsystemBase {
 
   // Solenoid
   private DoubleSolenoid sol = 
-      new DoubleSolenoid(Constants.PCMChannels.Piston1, Constants.PCMChannels.Piston2);
+      new DoubleSolenoid(Constants.PCMChannels.kPiston1, Constants.PCMChannels.kPiston2);
 
   /**
    * constructor.
    */
-  public AnglePistons() {
+  public SealingPiston() {
     // Auto retract on robot start
     this.setPistonState(PistonState.RETRACTED);
   }

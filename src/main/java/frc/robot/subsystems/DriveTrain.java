@@ -8,23 +8,17 @@ import frc.robot.Constants;
 
 public class DriveTrain extends SubsystemBase {
   // Motors
-  public WPI_TalonSRX leftMotor1  = new WPI_TalonSRX(Constants.CANIds.LeftDrive1);
-  public WPI_TalonSRX leftMotor2  = new WPI_TalonSRX(Constants.CANIds.LeftDrive2);
+  public WPI_TalonSRX leftMotor  = new WPI_TalonSRX(Constants.CANIds.kLeftDriveMotor);
 
-  public WPI_TalonSRX rightMotor1 = new WPI_TalonSRX(Constants.CANIds.RightDrive1);
-  public WPI_TalonSRX rightMotor2 = new WPI_TalonSRX(Constants.CANIds.RightDrive2);
+  public WPI_TalonSRX rightMotor = new WPI_TalonSRX(Constants.CANIds.kRightDriveMotor);
 
   // Differential Drive
-  private DifferentialDrive drive = new DifferentialDrive(leftMotor1, rightMotor1);
+  private DifferentialDrive drive = new DifferentialDrive(leftMotor, rightMotor);
 
   /**
    * Constructor.
    */
   public DriveTrain() {
-    // Follow
-    this.leftMotor2.follow(this.leftMotor1);
-    this.rightMotor2.follow(this.rightMotor1);
-
     // Invert right side
     this.drive.setRightSideInverted(true);
   }
