@@ -19,8 +19,6 @@ public final class Constants {
 
   // PCM Channels
   public static final class PCMChannels {
-    public static final int kPiston1 = 1;
-    public static final int kPiston2 = 2;
     public static final int kTopCannon = 3;
     public static final int kLeftCannon = 4;
     public static final int kRightCannon = 5;
