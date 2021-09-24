@@ -14,5 +14,8 @@
     "**/.factorypath": true,
     "**/*~": true
   },
-  "java.checkstyle.configuration": "${workspaceFolder}\\checkstyle.xml"
+  "java.checkstyle.configuration": "${workspaceFolder}\\checkstyle.xml",
+  "cSpell.words": [
+    "Tele"
+  ]
 }

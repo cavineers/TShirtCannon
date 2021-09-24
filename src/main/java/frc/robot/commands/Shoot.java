@@ -4,6 +4,7 @@ import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.RobotContainer;
 import frc.robot.subsystems.Cannon;
+import edu.wpi.first.wpilibj.GenericHID.RumbleType;
 
 public class Shoot extends CommandBase {
   // Cannon
@@ -19,11 +20,13 @@ public class Shoot extends CommandBase {
    * @param cannon Cannon Object.
    * @param rc RobotContainer Object.
    */
-  public Shoot(Cannon cannon, RobotContainer rc) {
+  public Shoot(Cannon cannon, RobotContainer container) {
     this.cannon = cannon;
-    this.rc = rc;
+    this.rc = container;
 
     addRequirements(cannon);
+    container.joy.setRumble(RumbleType.kLeftRumble, 1.0);
+    container.joy.setRumble(RumbleType.kRightRumble, 1.0);
   }
 
   @Override
@@ -48,6 +51,8 @@ public class Shoot extends CommandBase {
   public void end(boolean interrupted) {
     // Close when finished
     this.cannon.close();
+    this.rc.joy.setRumble(RumbleType.kLeftRumble, 0.0);
+    this.rc.joy.setRumble(RumbleType.kRightRumble, 0.0);
   }
 
   @Override
