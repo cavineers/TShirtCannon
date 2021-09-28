@@ -11,11 +11,6 @@ public final class Constants {
     public static final int kLeftDriveMotor2 = 4;
   }
 
-  public static final class Revolver {
-    public static final double kSpeedForward = 0.4;
-    public static final double kSpeedReverse = -0.3;
-  }
-
   // PCM Channels
   public static final class PCMChannels {
     public static final int kTopCannon = 3;
