@@ -9,7 +9,6 @@ public final class Constants {
     public static final int kLeftDriveMotor1 = 2;
     public static final int kRightDriveMotor2 = 3;
     public static final int kLeftDriveMotor2 = 4;
-    public static int kRevolver = 5;
   }
 
   public static final class Revolver {
