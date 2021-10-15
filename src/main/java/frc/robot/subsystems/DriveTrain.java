@@ -29,8 +29,8 @@ public class DriveTrain extends SubsystemBase {
     this.right1.restoreFactoryDefaults();
     this.right2.restoreFactoryDefaults();
 
-    this.left2.follow(left1);
-    this.right2.follow(right1);
+    this.left2.follow(this.left1);
+    this.right2.follow(this.right1);
   }
 
   /**

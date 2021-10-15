@@ -3,6 +3,7 @@ package frc.robot;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import edu.wpi.first.wpilibj2.command.button.POVButton;
+import frc.robot.commands.SetHeldSafety;
 import frc.robot.commands.SetSafety;
 import frc.robot.commands.Shoot;
 import frc.robot.subsystems.Cannon;
@@ -49,8 +50,9 @@ public class RobotContainer {
 
   private void configureButtonBindings() {
     // Safety on/off
-    m_rightMenu.whenPressed(new SetSafety(this, SafetyMode.SAFETY_OFF));
-    m_leftMenu.whenPressed(new SetSafety(this, SafetyMode.SAFETY_ON));
+    m_leftMenu.whenHeld(new SetHeldSafety(this));
+    // m_rightMenu.whenPressed(new SetSafety(this, SafetyMode.SAFETY_OFF));
+    // m_leftMenu.whenPressed(new SetSafety(this, SafetyMode.SAFETY_ON));
 
     // D-pad buttons
     m_dPadTop.whenPressed(new Shoot(this.topCannon, this));
